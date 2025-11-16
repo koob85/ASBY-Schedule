@@ -3,10 +3,11 @@ See how to get started in depth:
 https://docs.google.com/document/d/1tGxXGC6ICAQgjZqcLupNdqaqXt1RwU_mv3O4ja9-D8k/edit?usp=sharing
 
 Get statrted TLDR:
-1. This runs on JavaScript. Make sure you have Node.js installed
-2. Update the following variables in Settings.js: MyBase, MyName, MyCredentials
-3. Update the variables below: targetDay, targetMonth
-4. To run the script, open the terminal and type 'node index.js'
+1. This runs on JavaScript. Make sure you have Node.js installed3
+2. Run npm install on the project
+3. Update the following variables in Settings.js: MyBase, MyName, MyCredentials
+4. Update the variables below: targetDay, targetMonth
+5. To run the script, open the terminal and type 'node index.js'
 
 Notes:
 - You must be on reserve to run the code for the target month. 
