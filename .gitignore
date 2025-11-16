@@ -1,5 +1,5 @@
 # Project Specific
-Settings.js
+Modules/Settings.js
 Database.json
 
 # Logs
@@ -141,5 +141,3 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
-Database.json
-Modules/Settings.js
