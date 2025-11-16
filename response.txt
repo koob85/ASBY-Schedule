@@ -1,0 +1,910 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        .dot {
+            height: 14px;
+            width: 14px;
+            background-color: red;
+            border-radius: 50%;
+            display: inline-block;
+            position: absolute;
+            right: 4px;
+            bottom: 0px;
+        }
+        .dotCounter {
+            color: white;
+              font-size:9px;
+              position:absolute;
+              bottom:3px;
+              right:4px;
+        }
+       
+    </style>
+
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" /><meta name="apple-mobile-web-app-status-bar-style" content="black" /><meta name="apple-mobile-web-app-capable" content="yes" /><meta http-equiv="X-UA-Compatible" content="IE=9" /><title>
+	N-OC | Mobile (VXP-RATATOSK.NOC)
+</title>
+    <!-- iPhone -->
+    <link href="/RaidoMobile/Images/iOS/apple-touch-icon-57x57.png?v=25.3.1.2"
+        sizes="57x57" rel="apple-touch-icon" />
+    <link href="/RaidoMobile/Images/iOS/apple-touch-startup-image-320x460.png?v=25.3.1.2"
+        media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)"
+        rel="apple-touch-startup-image" />
+    <!-- iPhone (Retina) -->
+    <link href="/RaidoMobile/Images/iOS/apple-touch-icon-114x114.png?v=25.3.1.2"
+        sizes="114x114" rel="apple-touch-icon" />
+    <link href="/RaidoMobile/Images/iOS/apple-touch-startup-image-640x920.png?v=25.3.1.2"
+        media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image" />
+    <!-- iPhone 5 -->
+    <link href="/RaidoMobile/Images/iOS/apple-touch-startup-image-640x1096.png?v=25.3.1.2"
+        media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image" />
+    <!-- iPad -->
+    <link href="/RaidoMobile/Images/iOS/apple-touch-icon-72x72.png?v=25.3.1.2"
+        sizes="72x72" rel="apple-touch-icon" />
+    <link href="/RaidoMobile/Images/iOS/apple-touch-startup-image-768x1004.png?v=25.3.1.2"
+        media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)"
+        rel="apple-touch-startup-image" />
+    <link href="/RaidoMobile/Images/iOS/apple-touch-startup-image-748x1024.png?v=25.3.1.2"
+        media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)"
+        rel="apple-touch-startup-image" />
+    <!-- iPad (Retina) -->
+    <link href="/RaidoMobile/Images/iOS/apple-touch-icon-144x144.png?v=25.3.1.2"
+        sizes="144x144" rel="apple-touch-icon" />
+    <link href="/RaidoMobile/Images/iOS/apple-touch-startup-image-1536x2008.png?v=25.3.1.2"
+        media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image" />
+    <link href="/RaidoMobile/Images/iOS/apple-touch-startup-image-1496x2048.png?v=25.3.1.2"
+        media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image" />
+    <link rel="stylesheet" href="/RaidoMobile/Styles/Style.css?v=25.3.1.2"
+        type="text/css" />
+    <link rel="stylesheet" href="/RaidoMobile/Styles/Mobile.css?v=25.3.1.2"
+        type="text/css" />
+    <link rel="stylesheet" href="/RaidoMobile/Styles/leftmenu.css?v=25.3.1.2"
+        type="text/css" />
+
+    <script type="text/javascript" src="/RaidoMobile/Scripts/jquery-1.11.3.min.js?v=25.3.1.2"></script>
+    <script type="text/javascript" src="/RaidoMobile/Scripts/jquery-migrate-1.2.1.min.js?v=25.3.1.2"></script>
+    <script type="text/javascript" src="/RaidoMobile/Scripts/jquery.touchslider.min.js?v=25.3.1.2"></script>
+    <script type="text/javascript" src="/RaidoMobile/Scripts/RaidoMobile.js?v=25.3.1.2"></script>
+    <script type="text/javascript" src="/RaidoMobile/Scripts/moment.js?v=25.3.1.2"></script>
+    <script type="text/javascript" src="/RaidoMobile/Scripts/ScrollToPlugin.js?v=25.3.1.2"></script>
+    <script type="text/javascript" src="/RaidoMobile/Scripts/jquery-ui/js/jquery-ui.min.js?v=25.3.1.2"></script>
+    
+    <script>
+        const __ENV__ = {
+            VERSION: "25.3.1.2",
+            APPLICATION_URL: "https://vxp.noc.vmc.navblue.cloud/RaidoMobile",
+            APPLICATION_PATH: "/RaidoMobile",
+            PAGE_URL: "https://vxp.noc.vmc.navblue.cloud",
+            SERVICE_WORKER_URL: ''
+        };
+    </script>
+    <script src="/RaidoMobile/Scripts/global-store.js" type="module"></script>
+    <script src="/RaidoMobile/Scripts/trade-badge.js" type="module"></script>
+    
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('.ItemHeader').live('click', function () {
+                $(this).parent().children('.ItemDetails').slideToggle();
+            });
+
+        });
+
+    </script>
+    <style type="text/css">
+        .ItemHeader, .ItemHeader table
+        {
+            height: 40px;
+        }
+        
+        .ItemHeader td:nth-child(1), .ItemHeader td:nth-child(2), .ItemHeader td:nth-child(4), .ItemHeader td:nth-child(5)
+        {
+            width: 12%;
+        }
+        
+        .ItemHeader td:nth-child(3)
+        {
+            width: 20%;
+        }
+        
+        .ItemHeader td:nth-child(6), .ItemHeader td:nth-child(7), .ItemHeader td:nth-child(8)
+        {
+            width: 7%;
+        }
+        .ItemHeader td:nth-child(9)
+        {
+            width: 8%;
+        }
+        .ItemHeader td:nth-child(10)
+        {
+            width: 3%;
+        }
+        .triangle
+        {
+            display: inline;
+            float: right;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 20px 20px 0;
+            position: relative;
+            top: -10px;
+            right: 0;
+        }
+        #panelUpperWrapper
+        {
+            float: left;
+            width: 49%;
+        }
+        #panelLowerWrapper
+        {
+            float: right;
+            width: 50%;
+        }
+        
+        @media screen and (max-width: 800px)
+        {
+            #panelUpperWrapper
+            {
+                float: none;
+                width: auto;
+            }
+            #panelLowerWrapper
+            {
+                float: none;
+                width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header" class="avxgrad_yellow alwaysOverlay">
+	
+        <div class="topbar-float topbar-left">
+            <div id="goBackLink" class="go-back-button-container">
+		
+                <button type="button" class="go-back-button"  style="background: url('/RaidoMobile/Images/back.png') center center;">
+                    <div class="overlay"></div>
+                </button>
+            
+	</div>
+        </div>
+        <div class="topbar-float topbar-center">
+            <a href="/RaidoMobile/MainPage.aspx">
+                <img src="/RaidoMobile/Images/logo.png" alt="Company Logo" style="max-height: 30px" /></a>
+        </div>
+        <div class="topbar-float topbar-right" style="position:relative;" >
+            <div id="tradeCounter" class="topbar-button" style="position:relative; display: inline-block;">
+		
+                <x-trade-badge url="Grids/HumanResources/Trade.aspx"></x-trade-badge>
+            
+	</div>
+            <a id="linkAbout" class="topbar-button" href="../../About.aspx" style="position:relative;"><img src="../../Images/About.png" alt="" /></a>
+            <a href="/RaidoMobile/Logout.aspx"  class="topbar-button">
+            <img src="/RaidoMobile/Images/Logout.png" alt="Logout" /></a>
+        </div>
+        <br style="clear: left;" />
+    
+</div>
+    <div id="wrapper" class="avxgrad_gray">
+	
+        <div style="padding: 10px;">
+            <form method="post" action="./StationOperations.aspx?rnd=16290" id="form">
+	<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="5897C965" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="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" />	
+                
+    <div id="MasterMain_PageHeader_PageHeader" class="PageHeader">
+		
+    <table>
+        <tr>
+            <td id="MasterMain_PageHeader_PageHeaderLeft" style="width: 15%;"></td>
+		
+            <td id="MasterMain_PageHeader_PageHeaderCenter" style="width: 70%;"><span>Station Operations</span></td>
+		
+            <td id="MasterMain_PageHeader_PageHeaderRight" style="width: 15%;"></td>
+		
+        </tr>
+    </table>
+
+	</div>
+
+    <div id="MasterMain_SelectorPanel" class="SelectorBox">
+		
+        <div id="MasterMain_Panel8" class="Float">
+			
+            <span id="MasterMain_lbDate" class="leftalignedlabel">Date</span><br />
+            
+
+<script type="text/javascript" src="/RaidoMobile/Scripts/DateTime/newDateSpan2DigitYearMax.js"></script>
+<script type="text/javascript" src="/RaidoMobile/Scripts/jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
+<link rel="Stylesheet" type="text/css" href="/RaidoMobile/Scripts/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.min.css" />
+
+<input type="hidden" name="ctl00$MasterMain$tbDate$hfMonthShortNames" id="MasterMain_tbDate_hfMonthShortNames" value="JAN,FEB,MAR,APR,MAY,JUN,JUL,AUG,SEP,OCT,NOV,DEC" />
+<input type="hidden" name="ctl00$MasterMain$tbDate$hfWdMinNames" id="MasterMain_tbDate_hfWdMinNames" value="Su,Mo,Tu,We,Th,Fr,Sa" />
+<input type="hidden" name="ctl00$MasterMain$tbDate$hfCalorder" id="MasterMain_tbDate_hfCalorder" value="dmy" />
+<input type="hidden" name="ctl00$MasterMain$tbDate$hfReadonly" id="MasterMain_tbDate_hfReadonly" />
+<input type="hidden" name="ctl00$MasterMain$tbDate$hfMaxTwoDigitYear" id="MasterMain_tbDate_hfMaxTwoDigitYear" value="2079" />
+<div id="MasterMain_tbDate_wrapper" style="float: left;">
+    <input type="hidden" name="ctl00$MasterMain$tbDate$hdnAllowEmptyDates" id="MasterMain_tbDate_hdnAllowEmptyDates" value="false" />
+    <span id="MasterMain_tbDate_labelDate" class="leftalignedlabel datelabel"></span>
+    <div style="float: left;">
+        <div style="float: left;">
+            <input name="ctl00$MasterMain$tbDate$DateFieldTextBox" type="text" value="19NOV25" maxlength="50" id="MasterMain_tbDate_DateFieldTextBox" class="inputRaido jqiatadate" onFocus="javascript:this.select()" onkeydown="javascript:this.setAttribute(&#39;validate&#39;,&#39;true&#39;)" validate="false" onBlur="javascript:MasterMain_tbDate_DateFieldTextBoxtryValidate(this)" />
+        </div>
+        <div style="float: left;" class="jqsingledate">
+            <input type="hidden" name="ctl00$MasterMain$tbDate$hfDate" id="MasterMain_tbDate_hfDate" value="20251119" />
+        </div>
+        <div style="float: left;" class="jqsingledate">
+            
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" id="loadJavascript">
+    var calorder = "ymd";
+    var MasterMain_tbDate_DateFieldTextBoxlimiter = null;
+    var MasterMain_tbDate_DateFieldTextBoxinPast = false;
+    
+    if (typeof (Sys) != 'undefined') {
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(MasterMain_tbDate_DateFieldTextBoxWork);
+    }
+
+    $(document).ready(function () {
+        MasterMain_tbDate_DateFieldTextBoxWork();
+    });
+
+    function MasterMain_tbDate_DateFieldTextBoxWork() {
+        MasterMain_tbDate_DateFieldTextBoxSetItAlUp();
+        var tmpCal = $('#MasterMain_tbDate_hfCalorder').val();
+        if (tmpCal != null && tmpCal != "") {
+            calorder = tmpCal;
+        }
+    }
+
+    function MasterMain_tbDate_DateFieldTextBoxSetItAlUp() {
+        if (document.getElementById('MasterMain_tbDate_hdnAllowEmptyDates') != null) {
+            var AllowEmptyDateField = document.getElementById('MasterMain_tbDate_hdnAllowEmptyDates').value.toLowerCase();
+            if (!AllowEmptyDateField) { AllowEmptyDateField = ""; }
+
+            var ids = {
+                dp: 'MasterMain_tbDate_DateFieldTextBox',
+                hf: 'MasterMain_tbDate_hfDate',
+                hfMonthShortNames: "MasterMain_tbDate_hfMonthShortNames",
+                hfWdMinNames: "MasterMain_tbDate_hfWdMinNames",
+                hfMaxTwoDigitYear: 'MasterMain_tbDate_hfMaxTwoDigitYear',
+                buttonURL: '/RaidoMobile/Images/calendar.png'
+            }
+            $(function () {
+                if (document.getElementById("MasterMain_tbDate_hfReadonly").value != "true") {
+                    $.SetConfig('#' + ids.hfMonthShortNames, '#' + ids.hfWdMinNames, ids.buttonURL);
+                    $.DateChecker('#' + ids.dp, '#' + ids.hf, '', AllowEmptyDateField);
+                    $('#' + ids.hf).datepicker("option", "buttonText", '');
+                    if (MasterMain_tbDate_DateFieldTextBoxlimiter) {
+                        $('#' + ids.hf).datepicker("option", "minDate", MasterMain_tbDate_DateFieldTextBoxlimiter);
+                    }
+                } else {
+                    document.getElementById(ids.dp).value = FromInternalDateToIATADate(document.getElementById(ids.hf).value);
+                }
+            });
+
+            // fix an exception in new jquery ui 
+            if ($('#' + ids.hf).val().match("0000$")) $('#' + ids.hf).val($('#' + ids.hf).val().slice(0, -4));
+        }
+    }
+
+    function MasterMain_tbDate_DateFieldTextBoxtryValidate() {
+        var control = document.getElementById("MasterMain_tbDate_DateFieldTextBox");
+        var maxTwoDigitYear = document.getElementById("MasterMain_tbDate_hfMaxTwoDigitYear").value;
+        if (control.getAttribute('Validate') == 'true') {
+            var tmpDate = ParseDate(control.value, calorder, maxTwoDigitYear);
+            if (tmpDate != null) {
+                var value = ToInternalDate(tmpDate);
+                if (MasterMain_tbDate_DateFieldTextBoxlimiter) {
+                    var tmpOld = FromInternalDate(MasterMain_tbDate_DateFieldTextBoxlimiter);
+                    if (tmpOld > tmpDate) {
+                        value = MasterMain_tbDate_DateFieldTextBoxlimiter;
+                    }
+                }
+
+                $('#MasterMain_tbDate_hfDate').val(value);
+
+                document.getElementById("MasterMain_tbDate_DateFieldTextBox").value = ToIATADate(tmpDate);
+
+                $('body').trigger("MasterMain_tbDate_DateFieldTextBoxUpdate");
+            }
+            else if (document.getElementById('MasterMain_tbDate_hdnAllowEmptyDates').value == 'True') {
+                document.getElementById("MasterMain_tbDate_DateFieldTextBox").value = "";
+                $('#MasterMain_tbDate_hfDate').val("");
+            }
+            else {
+                alert("Date in unrecognized format!");
+
+                var value = FromInternalDate($('#MasterMain_tbDate_hfDate').val());
+                document.getElementById("MasterMain_tbDate_DateFieldTextBox").value = ToIATADate(value);
+            }
+        }
+
+        var tmpDate = ParseDate(control.value, calorder, maxTwoDigitYear);
+        if (tmpDate != null) {
+            if (tmpDate <= new Date('1/1/1753 12:00:00 AM') || tmpDate > new Date('6/6/2079 12:00:00 AM')) {
+                alert("Date is out of range. It shall be between " + ToIATADate(new Date('1/1/1753 12:00:00 AM')) + " and " + ToIATADate(new Date('6/6/2079 12:00:00 AM')));
+            }
+        }
+    }
+</script>
+
+&nbsp;
+        
+		</div>
+        <div id="MasterMain_Panel1" class="Float">
+			
+            <span id="MasterMain_lbStation" class="leftalignedlabel">Station</span><br />
+            <select name="ctl00$MasterMain$ddlStation" id="MasterMain_ddlStation">
+				<option value="-2147483648">All</option>
+				<option value="5602">ABE - LEHIGH VALLEY INTL</option>
+				<option value="5605">ABI - ABILENE RGNL</option>
+				<option value="5610">ABQ - ALBUQUERQUE INTL SUNPORT</option>
+				<option value="5627">ACT - WACO RGNL</option>
+				<option value="5628">ACV - CALIFORNIA REDWOOD COAST-HUMBOLDT COUNTY</option>
+				<option value="5629">ACY - ATLANTIC CITY INTL</option>
+				<option value="5640">ADW - JOINT BASE ANDREWS</option>
+				<option value="5653">AEX - ALEXANDRIA INTL</option>
+				<option value="11274">AFW - PEROT FLD/FORT WORTH ALLIANCE</option>
+				<option value="5672">AGS - AUGUSTA RGNL AT BUSH FLD</option>
+				<option value="5682">AHN - ATHENS/BEN EPPS</option>
+				<option value="5729">ALB - ALBANY INTL</option>
+				<option value="5738">ALO - WATERLOO RGNL</option>
+				<option value="5747">AMA - AMARILLO INTL APT</option>
+				<option value="5762">ANC - TED STEVENS ANCHORAGE INTL</option>
+				<option value="5791">APN - ALPENA COUNTY RGNL</option>
+				<option value="5841">ATL - HARTSFIELD - JACKSON ATLANTA INTL</option>
+				<option value="5866">AUS - AUSTIN-BERGSTROM INTL</option>
+				<option value="5874">AVL - MUNICIPAL</option>
+				<option value="15771">AZA - MESA GATEWAY</option>
+				<option value="5905">AZO - KALAMAZOO/BATTLE CREEK INTL</option>
+				<option value="11432">BAF - WESTFIELD-BARNES RGNL</option>
+				<option value="5952">BDA - KINDLEY FIELD APT</option>
+				<option value="5960">BDL - BRADLEY INTL</option>
+				<option value="5970">BED - LAURENCE G HANSCOM FLD</option>
+				<option value="5993">BFI - BOEING FLD/KING COUNTY INTL</option>
+				<option value="5994">BFL - MEADOWS FLD</option>
+				<option value="11482">BFM - MOBILE INTL</option>
+				<option value="6007">BGM - GREATER BINGHAMTON/EDWIN A LINK FLD</option>
+				<option value="6010">BGR - BANGOR INTL</option>
+				<option value="6026">BHM - BIRMINGHAM-SHUTTLESWORTH INTL</option>
+				<option value="11504">BIF - BIGGS AAF (FORT BLISS)</option>
+				<option value="6109">BMI - MUNICIPAL</option>
+				<option value="6118">BNA - NASHVILLE INTL</option>
+				<option value="6140">BOG -  EL DORADO INTL</option>
+				<option value="6142">BOI - BOISE AIR TRML/GOWEN FLD</option>
+				<option value="6150">BOS - GENERAL EDWARD LAWRENCE LOGAN INTL</option>
+				<option value="6167">BQN - RAFAEL HERNANDEZ</option>
+				<option value="6180">BRO - BROWNSVILLE/SOUTH PADRE ISLAND INTL</option>
+				<option value="6220">BTR - BATON ROUGE METRO, RYAN FLD</option>
+				<option value="6224">BTV - PATRICK LEAHY BURLINGTON INTL</option>
+				<option value="6231">BUF - BUFFALO NIAGARA INTL</option>
+				<option value="6241">BUR - BOB HOPE</option>
+				<option value="11619">BWG - BOWLING GREEN-WARREN COUNTY RGNL</option>
+				<option value="6261">BWI - BALTIMORE/WASHINGTON INTL THURGOOD MARSHALL</option>
+				<option value="6290">BZN - BOZEMAN YELLOWSTONE INTL</option>
+				<option value="6300">CAE - COLUMBIA METRO</option>
+				<option value="6400">CHA - LOVELL FIELD</option>
+				<option value="6408">CHO - CHARLOTTESVILLE-ALBEMARLE</option>
+				<option value="6412">CHS - CHARLESTON AFB/INTL</option>
+				<option value="6421">CID - CEDAR RAPIDS/THE EASTERN IOWA AIRPORT</option>
+				<option value="6442">CKB - NORTH CENTRAL WEST VIRGINIA</option>
+				<option value="6451">CLE - CLEVELAND-HOPKINS INTL</option>
+				<option value="6454">CLL - EASTERWOOD FIELD</option>
+				<option value="6460">CLT - CHARLOTTE/DOUGLAS INTL</option>
+				<option value="6469">CMH - JOHN GLENN COLUMBUS INTL</option>
+				<option value="6503">COS - CITY OF COLORADO SPRINGS MUNI</option>
+				<option value="6504">COU - COLUMBIA RGNL</option>
+				<option value="11808">CPS - ST LOUIS DOWNTOWN</option>
+				<option value="6531">CRP - CORPUS CHRISTI INTL</option>
+				<option value="6542">CSG - COLUMBUS METROPOLITAN APT</option>
+				<option value="6568">CUN - CANCUN</option>
+				<option value="6571">CUR - HATO</option>
+				<option value="6578">CVG - CINCINNATI/NORTHERN KENTUCKY INTL</option>
+				<option value="6585">CWA - CENTRAL WISCONSIN</option>
+				<option value="15805">CWF - CHENNAULT INTL</option>
+				<option value="11877">CXO - CONROE/NORTH HOUSTON RGNL</option>
+				<option value="6617">CZM - COZUMEL</option>
+				<option value="6623">DAB - DAYTONA BEACH INTL</option>
+				<option value="6628">DAL - DALLAS LOVE FLD</option>
+				<option value="6636">DAY - JAMES COX DAYTON INTERNATIONAL</option>
+				<option value="6642">DBQ - DUBUQUE RGNL</option>
+				<option value="6645">DCA - WASHINGTON NATIONAL APT</option>
+				<option value="6663">DEN - DENVER INTL</option>
+				<option value="6668">DFW - DALLAS-FORT WORTH INTL</option>
+				<option value="6678">DHN - DOTHAN RGNL</option>
+				<option value="6754">DSM - DES MOINES INTL</option>
+				<option value="6761">DTW - DETROIT METRO WAYNE COUNTY</option>
+				<option value="6811">EFD - HOUSTON ELLINGTON FIELD</option>
+				<option value="6845">ELP - EL PASO INTL</option>
+				<option value="6903">EUG - MAHLON SWEET FIELD</option>
+				<option value="6909">EVV - DRESS MEMORIAL</option>
+				<option value="6916">EWR - NEW YORK NEWARK INTERNATIONAL APT</option>
+				<option value="6921">EYW - KEY WEST INTL</option>
+				<option value="6936">FAR - HECTOR</option>
+				<option value="6940">FAY - FAYETTEVILLE RGNL/GRANNIS FLD</option>
+				<option value="6947">FCA - GLACIER NATIONAL PARK</option>
+				<option value="6978">FLG - PULLIAM FIELD</option>
+				<option value="6981">FLL - FORT LAUDERDALE/HOLLYWOOD INTL</option>
+				<option value="6983">FLO - GILBERT FIELD</option>
+				<option value="7007">FOE - TOPEKA FORBES AFB</option>
+				<option value="7011">FOR - Fortaleza (Pinto Martins Intl) </option>
+				<option value="7035">FSD - JOE FOSS FLD</option>
+				<option value="7042">FTW - FORT WORTH MEACHAM INTL</option>
+				<option value="7089">GCM - OWEN ROBERTS INTERNATIONAL</option>
+				<option value="7103">GEG - SPOKANE INTL</option>
+				<option value="7140">GJT - GRAND JUNCTION RGNL</option>
+				<option value="7176">GNV - GAINESVILLE RGNL</option>
+				<option value="7202">GPT - GULFPORT-BILOXI INTL</option>
+				<option value="7205">GRB - GREEN BAY/AUSTIN STRAUBEL INTL</option>
+				<option value="12327">GRK - ROBERT GRAY AAF</option>
+				<option value="7212">GRR - GERALD R FORD INTL</option>
+				<option value="7222">GSO - PIEDMONT TRIAD INTL</option>
+				<option value="7223">GSP - GREENVILLE SPARTANBURG INTL</option>
+				<option value="7226">GTB - WHEELER-SACK AAF</option>
+				<option value="7232">GTR - GOLDEN TRIANGLE RGNL</option>
+				<option value="7234">GUA - LA AURORA INTL</option>
+				<option value="7268">GYE -  JOSE JOAQUIN DE OLMEDO INTL</option>
+				<option value="7275">GYY - GARY/CHICAGO INTL</option>
+				<option value="7379">HNL - DANIEL K INOUYE INTL</option>
+				<option value="7398">HOU - HOBBY</option>
+				<option value="7403">HPN - WESTCHESTER COUNTY</option>
+				<option value="7411">HRL - VALLEY INTL</option>
+				<option value="7421">HSV - HUNTSVILLE INTL-CARL T JONES FLD</option>
+				<option value="7429">HTS - TRI-STATE/MILTON J FERGUSON FLD</option>
+				<option value="7449">HVN - TWEED-NEW HAVEN</option>
+				<option value="12501">IAB - MC CONNELL AFB</option>
+				<option value="7468">IAD - WASHINGTON DULLES INTL</option>
+				<option value="7470">IAH - GEORGE BUSH INTCNTL/HOUSTON</option>
+				<option value="7481">ICT - WICHITA DWIGHT D EISENHOWER NTL</option>
+				<option value="7482">IDA - IDAHO FALLS RGNL</option>
+				<option value="7519">ILG - NEW CASTLE</option>
+				<option selected="selected" value="7521">ILM - NEW HANOVER COUNTY</option>
+				<option value="7535">IND - INDIANAPOLIS INTL</option>
+				<option value="7544">INT - SMITH-REYNOLDS</option>
+				<option value="7588">ISP - LONG ISLAND MAC ARTHUR</option>
+				<option value="7639">JAX - JACKSONVILLE INTL</option>
+				<option value="7657">JFK - JOHN F KENNEDY INTL</option>
+				<option value="14866">KIN - NORMAN MANLEY INTL</option>
+				<option value="7919">KOA - ELLISON ONIZUKA KONA INTL AT KEAHOLE</option>
+				<option value="8076">LAL - LAKELAND LINDER INTL</option>
+				<option value="8078">LAN - CAPITAL REGION INTL</option>
+				<option value="8083">LAS - HARRY REID INTL</option>
+				<option value="8087">LAX - LOS ANGELES INTL</option>
+				<option value="8091">LBB - LUBBOCK MUNICIPAL APT</option>
+				<option value="8112">LCK - RICKENBACKER INTL</option>
+				<option value="8142">LEX - BLUE GRASS</option>
+				<option value="8147">LFT - LAFAYETTE REGIONAL</option>
+				<option value="8149">LGA - NEW YORK LA GUARDIA APT</option>
+				<option value="8150">LGB - LONG BEACH (DAUGHERTY FLD)</option>
+				<option value="8186">LIR - TOMAS GUARDIA</option>
+				<option value="8188">LIT - BILL AND HILLARY CLINTON NTL/ADAMS FLD</option>
+				<option value="8227">LNK - LINCOLN</option>
+				<option value="8264">LRD - LAREDO INTL</option>
+				<option value="13011">LRF - LITTLE ROCK AFB</option>
+				<option value="8276">LSE - MUNICIPAL</option>
+				<option value="8305">LUK - CINCINNATI MUNICIPAL APT</option>
+				<option value="8322">LWB - GREENBRIER VALLEY</option>
+				<option value="8340">LYH - LYNCHBURG RGNL/PRESTON GLENN FLD</option>
+				<option value="8380">MBJ - SANGSTER INTERNATIONAL</option>
+				<option value="8395">MCI - KANSAS CITY INTL</option>
+				<option value="8400">MCN - MIDDLE GEORGIA RGNL</option>
+				<option value="8401">MCO - ORLANDO INTL</option>
+				<option value="8420">MDT - HARRISBURG INTL</option>
+				<option value="8423">MDW - CHICAGO MIDWAY INTL</option>
+				<option value="8436">MEM - MEMPHIS INTL</option>
+				<option value="8441">MEX - BENITO JUAREZ INTL</option>
+				<option value="8447">MFE - MC ALLEN INTL</option>
+				<option value="8455">MFR - ROGUE VALLEY INTL - MEDFORD</option>
+				<option value="8459">MGA -  AUGUSTO CESAR SANDINO INTL</option>
+				<option value="8466">MGM - MONTGOMERY RGNL (DANNELLY FLD)</option>
+				<option value="8484">MHT - MANCHESTER BOSTON RGNL</option>
+				<option value="8489">MIA - MIAMI INTL</option>
+				<option value="8490">MID - LIC MANUEL CRESCENCIO REJON</option>
+				<option value="8491">MIE - DELAWARE COUNTY RGNL</option>
+				<option value="8522">MKE - GENERAL MITCHELL INTL</option>
+				<option value="8540">MLB - MELBOURNE ORLANDO INTL</option>
+				<option value="8545">MLI - QUAD-CITIES</option>
+				<option value="8654">MSN - TRUAX FIELD</option>
+				<option value="8655">MSO - MISSOULA MONTANA</option>
+				<option value="8656">MSP - MINNEAPOLIS-ST PAUL INTL/WOLD-CHAMBERLAIN</option>
+				<option value="8664">MSY - NEW ORLEANS INTERNATIONAL APT</option>
+				<option value="8676">MTO - COLES COUNTY</option>
+				<option value="8754">MYR - MYRTLE BEACH INTL</option>
+				<option value="8792">NAS - NASSAU INTERNATIONAL APT</option>
+				<option value="8800">NBW - GUANTANAMO BAY NAS</option>
+				<option value="16155">NKT - CHERRY POINT MCAS (CUNNINGHAM FLD)</option>
+				<option value="13383">NKX - MIRAMAR MCAS (JOE FOSS FLD)</option>
+				<option value="13386">NLU - FELIPE ANGELES INTL</option>
+				<option value="8960">OAJ - ALBERT J ELLIS</option>
+				<option value="8961">OAK - METRO OAKLAND INTL</option>
+				<option value="13483">OGD - OGDEN-HINCKLEY</option>
+				<option value="9013">OKC - WILL ROGERSW WORLD</option>
+				<option value="9039">OMA - EPPLEY AIRFIELD</option>
+				<option value="9057">ONT - ONTARIO INTL</option>
+				<option value="9065">OPF - MIAMI OPA LOCKA APT</option>
+				<option value="9072">ORD - CHICAGO O&#39;HARE INTL</option>
+				<option value="9074">ORF - NORFOLK INTL</option>
+				<option value="9148">PAE - SNOHOMISH COUNTY</option>
+				<option value="9150">PAH - BARKLEY RGNL</option>
+				<option value="13574">PAM - Tyndall AFB</option>
+				<option value="9153">PAP - TOUSSAINT LOUVERTURE INTL</option>
+				<option value="9167">PBI - PALM BEACH INTL</option>
+				<option value="9199">PDX - PORTLAND INTL</option>
+				<option value="13614">PGD - PUNTA GORDA</option>
+				<option value="9233">PHF - NEWPORT NEWS/WILLIAMSBURG INTL</option>
+				<option value="9235">PHL - PHILADELPHIA INTL</option>
+				<option value="9242">PHX - PHOENIX SKY HARBOR INTERNATIONAL APT</option>
+				<option value="9244">PIA - GENERAL DOWNING - PEORIA INTL</option>
+				<option value="9245">PIB - HATTIESBURG/LAUREL RGNL</option>
+				<option value="9248">PIE - ST PETE-CLEARWATER INTL</option>
+				<option value="9254">PIT - PITTSBURGH GREATER PITTSBURGH APT</option>
+				<option value="9316">PNS - PENSACOLA INTL</option>
+				<option value="9367">PSC - TRI-CITIES</option>
+				<option value="13725">PSM - PORTSMOUTH INTL AT PEASE</option>
+				<option value="9375">PSP - PALM SPRINGS INTL</option>
+				<option value="9388">PTK - OAKLAND COUNTY INTL</option>
+				<option value="9395">PUB - PUEBLO MEML</option>
+				<option value="9401">PUJ - PUNTA CANA</option>
+				<option value="9412">PVD - RHODE ISLAND TF GREEN INTL</option>
+				<option value="9418">PVU - PROVO MUNI</option>
+				<option value="9423">PWM - PORTLAND CITY</option>
+				<option value="13787">QRO - QUERETARO INTL</option>
+				<option value="13806">RBL - Red Bluff Fss</option>
+				<option value="9498">RDD - REDDING RGNL</option>
+				<option value="9501">RDM - ROBERTS FLD</option>
+				<option value="9503">RDU - RALEIGH-DURHAM INTL</option>
+				<option value="9535">RIC - RICHMOND INTL</option>
+				<option value="13847">RIV - MARCH ARB</option>
+				<option value="9575">RNO - RENO/TAHOE INTL</option>
+				<option value="9578">ROA - ROANOKE/BLACKSBURG RGNL (WOODRUM FLD)</option>
+				<option value="9580">ROC - FREDERICK DOUGLASS/GREATER ROCHESTER INTL</option>
+				<option value="9591">ROW - ROSWELL AIR CENTER</option>
+				<option value="9610">RSW - SOUTHWEST FLORIDA INTL</option>
+				<option value="9651">SAL - EL SALVADOR INTERNATIONAL</option>
+				<option value="9653">SAN - SAN DIEGO INTL</option>
+				<option value="9655">SAP - RAMON VILLEDA MORALES INTL</option>
+				<option value="9657">SAT - SAN ANTONIO INTERNATIONAL APT</option>
+				<option value="9659">SAV - SAVANNAH/HILTON HEAD INTL</option>
+				<option value="9663">SBA - SANTA BARBARA MUNI</option>
+				<option value="13933">SBD - SAN BERNARDINO INTL</option>
+				<option value="9671">SBN - SOUTH BEND INTL</option>
+				<option value="9683">SCF - SCOTTSDALE</option>
+				<option value="9686">SCK - STOCKTON METRO</option>
+				<option value="9703">SDF - STANDIFORD FIELD</option>
+				<option value="9711">SDQ - LAS AMERICAS</option>
+				<option value="9719">SEA - SEATTLE-TACOMA INTL</option>
+				<option value="9731">SFB - ORLANDO SANFORD INTL</option>
+				<option value="9740">SFO - SAN FRANCISCO INTL</option>
+				<option value="9748">SGF - Springfield-Branson National Airport</option>
+				<option value="9755">SGU - ST GEORGE RGNL</option>
+				<option value="9762">SHD - SHENANDOAH VALLEY RGNL</option>
+				<option value="9777">SHV - SHREVEPORT RGNL</option>
+				<option value="9795">SIT - SITKA ROCKY GUTIERREZ</option>
+				<option value="9799">SJC - NORMAN Y MINETA SAN JOSE INTL</option>
+				<option value="9807">SJO - San Jose (Juan Santamaria Intl) </option>
+				<option value="9809">SJU - LUIS MU&#165;OZ MARIN INTL.</option>
+				<option value="9816">SKB - GOLDEN ROCK</option>
+				<option value="9834">SLC - SALT LAKE CITY INTL</option>
+				<option value="9836">SLE - MCNARY FLD</option>
+				<option value="9854">SMF - SACRAMENTO INTL</option>
+				<option value="9865">SMX - SANTA MARIA PUB/CAPT G ALLAN HANCOCK FLD</option>
+				<option value="9868">SNA - JOHN WAYNE INTL.</option>
+				<option value="9892">SOP - MOORE COUNTY</option>
+				<option value="9935">SRQ - SARASOTA/BRADENTON INTL</option>
+				<option value="9962">STL - ST LOUIS LAMBERT INTL</option>
+				<option value="9968">STS - CHARLES M SCHULZ - SONOMA COUNTY</option>
+				<option value="9972">STX - ST. CROIX I/HENRY E. ROHLSEN</option>
+				<option value="9988">SUX - SIOUX GATEWAY/BRIG GENERAL BUD DAY FLD</option>
+				<option value="10013">SWF - STEWART INTERNATIONAL</option>
+				<option value="10051">SYR - SYRACUSE HANCOCK INTL</option>
+				<option value="10077">TAP - TAPACHULA INTL </option>
+				<option value="10105">TCL - TUSCALOOSA NTL</option>
+				<option value="10226">TLH - TALLAHASSEE INTL</option>
+				<option value="10266">TNT - DADE-COLLIER TRAINING AND TRANSITION</option>
+				<option value="10276">TOL - EUGENE F KRANZ TOLEDO EXPRESS</option>
+				<option value="10285">TPA - TAMPA INTL</option>
+				<option value="10305">TRI - TRI-CITY</option>
+				<option value="10354">TUL - TULSA INTL</option>
+				<option value="10360">TUS - TUCSON INTL</option>
+				<option value="10365">TVC - CHERRY CAPITAL</option>
+				<option value="10388">TYS - MCGHEE-TYSON</option>
+				<option value="9682">UNV - STATE COLLEGE RGNL</option>
+				<option value="16597">USA - CONCORD-PADGETT RGNL</option>
+				<option value="10492">UVF - SAINT LUCIA HEWANORRA APT</option>
+				<option value="14430">VAD - MOODY AFB</option>
+				<option value="14441">VCV - SOUTHERN CALIFORNIA LOGISTICS</option>
+				<option value="10584">VPS - EGLIN AFB/DESTIN-FT WALTON BEACH</option>
+				<option value="16455">VQQ - CECIL</option>
+				<option value="10594">VSA - Villahermosa (C P A Carlos Rovirosa Intl) </option>
+				<option value="14575">WRB - ROBINS AFB</option>
+				<option value="10705">WRI - MC GUIRE FLD (JOINT BASE MC GUIRE DIX LAKEHURST)</option>
+				<option value="14638">XNA - NORTHWEST ARKANSAS NTL</option>
+				<option value="10915">YIP - DETROIT WILLOW RUN APT</option>
+				<option value="10925">YKM - YAKIMA AIR TRML/MCALLISTER FLD</option>
+				<option value="10963">YNG - YOUNGSTOWN/WARREN RGNL</option>
+				<option value="11002">YQB - QUEBEC</option>
+				<option value="11073">YUL - PIERRE ELLIOT TRUDEAU INTL</option>
+				<option value="11074">YUM - YUMA MCAS/YUMA INTL</option>
+				<option value="11123">YYG - CHARLOTTETOWN</option>
+				<option value="11133">YYZ - TORONTO LESTER B PEARSON INTL APT</option>
+
+			</select>
+        
+		</div>
+        <div id="MasterMain_Panel2" class="Float">
+			
+            <span id="MasterMain_lbSort" class="leftalignedlabel">Sort by</span><br />
+            <select name="ctl00$MasterMain$ddlSort" id="MasterMain_ddlSort">
+				<option selected="selected" value="0">Time</option>
+				<option value="1">Registration</option>
+				<option value="2">Station</option>
+
+			</select>
+        
+		</div>
+        <div id="MasterMain_Panel3" class="Float">
+			
+            <span id="MasterMain_lbTimeMode" class="leftalignedlabel">TimeMode</span><br />
+            
+<script type="text/javascript">
+               
+    function hideshowStationlistbox() 
+    {
+        var timemodedropdown = document.getElementById("MasterMain_TimeMode_DP_TimeModes");
+        var stationsdropdown = document.getElementById("MasterMain_TimeMode_DP_Stations");
+        //if (timemodedropdown.selectedIndex == 3) {
+        if (timemodedropdown.options[timemodedropdown.selectedIndex].value == 5) {
+            stationsdropdown.style.visibility = "visible";
+        }
+        else if (stationsdropdown != null)
+            stationsdropdown.style.visibility = "hidden";
+    }
+</script>
+
+<select name="ctl00$MasterMain$TimeMode$DP_TimeModes" id="MasterMain_TimeMode_DP_TimeModes" class="inputStd" onChange="hideshowStationlistbox()">
+				<option value="1">UTC</option>
+				<option selected="selected" value="2">Local time</option>
+
+			</select>
+
+        
+		</div>
+        <div id="MasterMain_Panel4" class="Float">
+			
+            <br />
+            <input id="MasterMain_cbSwapDepArr" type="checkbox" name="ctl00$MasterMain$cbSwapDepArr" /><label for="MasterMain_cbSwapDepArr">Swap Dep/Arr</label>
+        
+		</div>
+        <div id="MasterMain_Panel5" class="Float">
+			
+            <br /> 
+            <input type="submit" name="ctl00$MasterMain$btnSearch" value="Search" id="MasterMain_btnSearch" class="button4" />
+        
+		</div>
+    
+	</div>
+    <div id="ListPanel" class="ListPanel">
+		
+        <div id="panelUpperWrapper">
+			
+            <div id="MasterMain_panelUpperHeader" class="SelectorBox">
+				
+                <span id="MasterMain_lbUpper">Departures</span>
+            
+			</div>
+            <div id="MasterMain_panelUpper">
+				
+            <div class="ListItem"><div class="ItemHeader" style="color:#FFFFFF;background-color:#424242;" onclick=""><table>
+					<tr class="ActivityInfoRow">
+						<td>XP1003</td><td>0730</td><td></td><td>BWI</td><td>N702VL</td><td></td><td></td><td>B&nbsp;42</td><td>B&nbsp;<br>0</td><td></td>
+					</tr>
+				</table></div><div class="ItemDetails"><table class="ItemChildTableDetails">
+					<tr>
+						<td colspan="2"></td>
+					</tr><tr>
+						<td class="right">Date</td><td class="left">19NOV25</td>
+					</tr><tr>
+						<td class="right">Departure</td><td class="left"><a href="/RaidoMobile/Grids/Station.aspx?id=7521">ILM - KILM - NEW HANOVER COUNTY</a></td>
+					</tr><tr>
+						<td class="right">Arrival</td><td class="left"><a href="/RaidoMobile/Grids/Station.aspx?id=6261">BWI - KBWI - BALTIMORE/WASHINGTON INTL THURGOOD MARSHALL</a></td>
+					</tr><tr>
+						<td class="right">STD</td><td class="left">0730</td>
+					</tr><tr>
+						<td class="right">STA</td><td class="left">0848</td>
+					</tr><tr>
+						<td class="right">Registration</td><td class="left">N702VL</td>
+					</tr><tr>
+						<td class="right">Version</td><td class="left">73G</td>
+					</tr><tr>
+						<td class="right">Type</td><td class="left">73G</td>
+					</tr><tr>
+						<td class="right">Crew On Board</td><td class="left">CA - 100915 Shepard, Matthew  <a href="mailto:mshepard@aveloair.com" target="_top" class="NoAction">mshepard@aveloair.com</a> <br/>FO - 300814 Collins, Jr, Benny  <a href="mailto:bcollinsjr@aveloair.com" target="_top" class="NoAction">bcollinsjr@aveloair.com</a> <br/>FA - 748650 ONeill, Erin  <a href="mailto:eoneill@aveloair.com" target="_top" class="NoAction">eoneill@aveloair.com</a> <br/>FA - 309021 Hill, Christopher  <a href="mailto:christopher.hill@aveloair.com" target="_top" class="NoAction">christopher.hill@aveloair.com</a> <br/>FAL - 868873 Sailer, Kimberly (L) <a href="mailto:ksailer@aveloair.com" target="_top" class="NoAction">ksailer@aveloair.com</a> <br/></td>
+					</tr><tr>
+						<td class="right">Pax</td><td class="left">Bookings<br/>
+Class Y42
+Weight 14/27/1/0</td>
+					</tr><tr>
+						<td class="right">Load</td><td class="left">Bookings<br/>
+T-2147483648.<br>Bookings<br/>
+B/6.CL/7</td>
+					</tr>
+				</table></div></div><div class="ListItem"><div class="ItemHeader" style="color:#FFFFFF;background-color:#424242;" onclick=""><table>
+					<tr class="ActivityInfoRow">
+						<td>XP1039</td><td>1142</td><td></td><td>DTW</td><td>N702VL</td><td></td><td></td><td>B&nbsp;36</td><td>B&nbsp;<br>0</td><td></td>
+					</tr>
+				</table></div><div class="ItemDetails"><table class="ItemChildTableDetails">
+					<tr>
+						<td colspan="2"></td>
+					</tr><tr>
+						<td class="right">Date</td><td class="left">19NOV25</td>
+					</tr><tr>
+						<td class="right">Departure</td><td class="left"><a href="/RaidoMobile/Grids/Station.aspx?id=7521">ILM - KILM - NEW HANOVER COUNTY</a></td>
+					</tr><tr>
+						<td class="right">Arrival</td><td class="left"><a href="/RaidoMobile/Grids/Station.aspx?id=6761">DTW - KDTW - DETROIT METRO WAYNE COUNTY</a></td>
+					</tr><tr>
+						<td class="right">STD</td><td class="left">1142</td>
+					</tr><tr>
+						<td class="right">STA</td><td class="left">1342</td>
+					</tr><tr>
+						<td class="right">Registration</td><td class="left">N702VL</td>
+					</tr><tr>
+						<td class="right">Version</td><td class="left">73G</td>
+					</tr><tr>
+						<td class="right">Type</td><td class="left">73G</td>
+					</tr><tr>
+						<td class="right">Crew On Board</td><td class="left">CA - 732908 Wallace, Bryan  <a href="mailto:bwallace@aveloair.com" target="_top" class="NoAction">bwallace@aveloair.com</a> <br/>FO - 465559 Lagusker, Cory  <a href="mailto:clagusker@aveloair.com" target="_top" class="NoAction">clagusker@aveloair.com</a> <br/>FA - 159456 Franzello, Robin  <a href="mailto:rfranzello@aveloair.com" target="_top" class="NoAction">rfranzello@aveloair.com</a> <br/>FA - 548966 Schaedel, Gene  <a href="mailto:gschaedel@aveloair.com" target="_top" class="NoAction">gschaedel@aveloair.com</a> <br/>FAL - 111060 DiGiovine, Lisa (L) <a href="mailto:ldigiovine@aveloair.com" target="_top" class="NoAction">ldigiovine@aveloair.com</a> <br/></td>
+					</tr><tr>
+						<td class="right">Pax</td><td class="left">Bookings<br/>
+Class Y36
+Weight 16/19/0/1</td>
+					</tr><tr>
+						<td class="right">Load</td><td class="left">Bookings<br/>
+T-2147483648.<br>Bookings<br/>
+B/8.CL/7</td>
+					</tr>
+				</table></div></div>
+			</div>
+        
+		</div>
+        <div id="panelLowerWrapper">
+			
+            <div id="MasterMain_panelLowerHeader" class="SelectorBox">
+				
+                <span id="MasterMain_lbLower">Arrivals</span>
+            
+			</div>
+            <div id="MasterMain_panelLower">
+				
+            <div class="ListItem"><div class="ItemHeader" style="color:#FFFFFF;background-color:#424242;" onclick=""><table>
+					<tr class="ActivityInfoRow">
+						<td>XP1006</td><td>1055</td><td></td><td>BWI</td><td>N702VL</td><td></td><td></td><td>B&nbsp;57</td><td>B&nbsp;<br>0</td><td></td>
+					</tr>
+				</table></div><div class="ItemDetails"><table class="ItemChildTableDetails">
+					<tr>
+						<td colspan="2"></td>
+					</tr><tr>
+						<td class="right">Date</td><td class="left">19NOV25</td>
+					</tr><tr>
+						<td class="right">Departure</td><td class="left"><a href="/RaidoMobile/Grids/Station.aspx?id=6261">BWI - KBWI - BALTIMORE/WASHINGTON INTL THURGOOD MARSHALL</a></td>
+					</tr><tr>
+						<td class="right">Arrival</td><td class="left"><a href="/RaidoMobile/Grids/Station.aspx?id=7521">ILM - KILM - NEW HANOVER COUNTY</a></td>
+					</tr><tr>
+						<td class="right">STD</td><td class="left">0933</td>
+					</tr><tr>
+						<td class="right">STA</td><td class="left">1055</td>
+					</tr><tr>
+						<td class="right">Registration</td><td class="left">N702VL</td>
+					</tr><tr>
+						<td class="right">Version</td><td class="left">73G</td>
+					</tr><tr>
+						<td class="right">Type</td><td class="left">73G</td>
+					</tr><tr>
+						<td class="right">Crew On Board</td><td class="left">CA - 100915 Shepard, Matthew  <a href="mailto:mshepard@aveloair.com" target="_top" class="NoAction">mshepard@aveloair.com</a> <br/>FO - 300814 Collins, Jr, Benny  <a href="mailto:bcollinsjr@aveloair.com" target="_top" class="NoAction">bcollinsjr@aveloair.com</a> <br/>FA - 748650 ONeill, Erin  <a href="mailto:eoneill@aveloair.com" target="_top" class="NoAction">eoneill@aveloair.com</a> <br/>FA - 309021 Hill, Christopher  <a href="mailto:christopher.hill@aveloair.com" target="_top" class="NoAction">christopher.hill@aveloair.com</a> <br/>FAL - 868873 Sailer, Kimberly (L) <a href="mailto:ksailer@aveloair.com" target="_top" class="NoAction">ksailer@aveloair.com</a> <br/></td>
+					</tr><tr>
+						<td class="right">Pax</td><td class="left">Bookings<br/>
+Class Y57
+Weight 16/37/1/3</td>
+					</tr><tr>
+						<td class="right">Load</td><td class="left">Bookings<br/>
+T-2147483648.<br>Bookings<br/>
+B/8.CL/16</td>
+					</tr>
+				</table></div></div><div class="ListItem"><div class="ItemHeader" style="color:#FFFFFF;background-color:#424242;" onclick=""><table>
+					<tr class="ActivityInfoRow">
+						<td>XP1038</td><td>2125</td><td></td><td>DTW</td><td>N702VL</td><td></td><td></td><td>B&nbsp;43</td><td>B&nbsp;<br>0</td><td></td>
+					</tr>
+				</table></div><div class="ItemDetails"><table class="ItemChildTableDetails">
+					<tr>
+						<td colspan="2"></td>
+					</tr><tr>
+						<td class="right">Date</td><td class="left">19NOV25</td>
+					</tr><tr>
+						<td class="right">Departure</td><td class="left"><a href="/RaidoMobile/Grids/Station.aspx?id=6761">DTW - KDTW - DETROIT METRO WAYNE COUNTY</a></td>
+					</tr><tr>
+						<td class="right">Arrival</td><td class="left"><a href="/RaidoMobile/Grids/Station.aspx?id=7521">ILM - KILM - NEW HANOVER COUNTY</a></td>
+					</tr><tr>
+						<td class="right">STD</td><td class="left">1932</td>
+					</tr><tr>
+						<td class="right">STA</td><td class="left">2125</td>
+					</tr><tr>
+						<td class="right">Registration</td><td class="left">N702VL</td>
+					</tr><tr>
+						<td class="right">Version</td><td class="left">73G</td>
+					</tr><tr>
+						<td class="right">Type</td><td class="left">73G</td>
+					</tr><tr>
+						<td class="right">Crew On Board</td><td class="left">CA - 732908 Wallace, Bryan  <a href="mailto:bwallace@aveloair.com" target="_top" class="NoAction">bwallace@aveloair.com</a> <br/>FO - 465559 Lagusker, Cory  <a href="mailto:clagusker@aveloair.com" target="_top" class="NoAction">clagusker@aveloair.com</a> <br/>FA - 159456 Franzello, Robin  <a href="mailto:rfranzello@aveloair.com" target="_top" class="NoAction">rfranzello@aveloair.com</a> <br/>FA - 548966 Schaedel, Gene  <a href="mailto:gschaedel@aveloair.com" target="_top" class="NoAction">gschaedel@aveloair.com</a> <br/>FAL - 111060 DiGiovine, Lisa (L) <a href="mailto:ldigiovine@aveloair.com" target="_top" class="NoAction">ldigiovine@aveloair.com</a> <br/></td>
+					</tr><tr>
+						<td class="right">Pax</td><td class="left">Bookings<br/>
+Class Y43
+Weight 14/26/2/1</td>
+					</tr><tr>
+						<td class="right">Load</td><td class="left">Bookings<br/>
+T-2147483648.<br>Bookings<br/>
+B/7.CL/7</td>
+					</tr>
+				</table></div></div>
+			</div>
+        
+		</div>
+    
+	</div>
+
+            </form>
+        </div>
+        
+        
+
+        
+</div>
+    <div id="menuButtonHolder">
+        <a href="javascript:return false;" id="linkMenu" class="NoAction">
+            <img src="/RaidoMobile/Images/menu_icon.png" alt="Menu" /></a>
+    </div>
+    <div class="fadedGreyBackground">
+    </div>
+    <div class="fadedGreyBackgroundSpin">
+    </div>
+    <div id="tabMasterMenu" class="avxyellow" style="position: fixed; top: 45px; left: 0px; width: 280px; z-index: 99; padding: 2px 2px 2px 2px; display: none;">
+        <div id="menuslider" class="touchslider">
+            <div class="touchslider-viewport" style="overflow: hidden;">
+                <div>
+                    <div class="touchslider-item"><div class="header">Human Resource</div><ul class='container'>
+
+<li><a href="/RaidoMobile/Dialogues/HumanResources/DownloadRosterAsExternalCalendar.aspx"><div class='leftmenu-SYFU448'></div>Download roster</a></li>
+<li><a href="/RaidoMobile/Grids/HumanResources/HumanResourcesLog.aspx"><div class='leftmenu-SYFU407'></div>HR Log</a></li>
+<li><a href="/RaidoMobile/Grids/HumanResources/HumanResourceMyAccValues.aspx"><div class='leftmenu-SYFU292'></div>My Acc values</a></li>
+<li><a href="/RaidoMobile/Grids/HumanResources/Contact.aspx"><div class='leftmenu-SYFU246'></div>My Contact Details</a></li>
+<li><a href="/RaidoMobile/Grids/HumanResources/HumanResourceMyDocs.aspx"><div class='leftmenu-SYFU188'></div>My Documents</a></li>
+<li><a href="/RaidoMobile/Dialogues/HumanResources/HumanResourceRoster.aspx"><div class='leftmenu-SYFU141'></div>My Roster</a></li>
+<li><a href="/RaidoMobile/Grids/HumanResources/OpenTime.aspx"><div class='leftmenu-SYFU397'></div>Open time</a></li>
+<li><a href="/RaidoMobile/Dialogues/MySettings.aspx"><div class='leftmenu-SYFU405'></div>Settings</a></li>
+<li><a href="/RaidoMobile/Grids/HumanResources/Trade.aspx"><div class='leftmenu-SYFU398'></div>Trade board</a></li>
+</ul></div><div class="touchslider-item"><div class="header">Locations</div><ul class='container'>
+
+<li><a href="/RaidoMobile/Grids/Station.aspx"><div class='leftmenu-SYFU12'></div>Stations</a></li>
+</ul></div><div class="touchslider-item"><div class="header">Schedule</div><ul class='container'>
+
+<li><a href="/RaidoMobile/Dialogues/HumanResources/CrewOnTimePerformanceReport.aspx"><div class='leftmenu-SYFU328'></div>Mobile On Time Performance Report</a></li>
+<li><a href="/RaidoMobile/Dialogues/Operations/StationOperations.aspx"><div class='leftmenu-SYFU196'></div>Station Operations</a></li>
+</ul></div>
+                </div>
+            </div>
+            <div class="touchslider-nav">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
